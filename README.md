@@ -1,4 +1,3 @@
-
 ## Languages, libraries and tools used
 
 * __[Python](https://www.python.org/downloads/)__
@@ -19,8 +18,18 @@ Install the dependencies and start the testing.
 ```sh
 make install
 ```
+## API Key
 
-## Automated tests
+- Local exexution: put export APIKEY="apikey" in .bash_profile. update key with your api key
+or run below command
+
+```sh
+export APIKEY="apikey"
+```
+
+- CI execution: add secret key in github action. Follow https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions
+
+## Run tests
 
 __To run test and generate full HTML details report of all the executed test, you can simply write the following command on Terminal__:
 ```sh
@@ -43,7 +52,7 @@ An html report will generate. used command : `pytest tests --html=report.html -s
 __To see the reports, open the Project window, and then right-click then click on refresh then right-click on report.html to open the file on the default browser.__
 
 ## CI intigration
-* Intigrated github action to run test on each push and pull request. code can be found in .github/workflow/push.yml
+* Intigrated github action to run test on each push and pull request. code can be found in .github/workflow/api_test_ci.yml
 
 ## Manual Test case
 * time_series_daily_test.feature

@@ -19,7 +19,7 @@ class Config():
     INTRADAY_FUNCTION: str = "TIME_SERIES_INTRADAY"
     DAILY_FUNCTION: str = "TIME_SERIES_DAILY"
     SYMBOL_VALUE: str= "IBM"
-    INTERVAL: Mapping[str, str] = field(default_factory=lambda : { "intraday":"5min", "daily":"daily"})
+    INTERVAL: Mapping[str, str] = field(default_factory=lambda : { "intraday":"5min", "daily":"Daily"})
     APIKEY: str = os.getenv("APIKEY", "demo")  # Read from environment, defaulting to "demo" if not found
     META_DATA_KEY: str = "Meta Data"
     LAST_REFRESHED_KEY: str = "3. Last Refreshed"
@@ -27,7 +27,7 @@ class Config():
     LAST_REFRESHED_INTRADAY_TIME_FORMATE: str = "%Y-%m-%d %H:%M:%S"
     INFORMATION_KEY:str = "1. Information"
     TIME_ZONE_VALUE: str = "US/Eastern"
-    TIME_SERIES_KEY = f"Time Series ({INTERVAL})"
+    TIME_SERIES_KEY = "Time Series ({})"
     TIME_SERIES_FIELDS: Sequence[str]= field(default_factory=lambda: ["1. open", "2. high", "3. low", "4. close", "5. volume"])
 
     @property
@@ -36,7 +36,7 @@ class Config():
         This function returns the expected metadata for daily time-series data to be used in test case assertions.
         """
         return { 
-        self.INFORMATION_KEY: self.INTERVAL["daily"],
+        self.INFORMATION_KEY: self.INTERVAL["daily"].lower(),
         "2. Symbol": self.SYMBOL_VALUE,
         self.LAST_REFRESHED_KEY: "%Y-%m-%d",
         "4. Output Size": "Compact",

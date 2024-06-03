@@ -46,8 +46,8 @@ def test_verify_intraday_time_series_fields(fetch_intraday_data,test_config):
 
     last_refreshed_field: str = test_config.LAST_REFRESHED_KEY
     last_refreshed_value: str = meta_data[last_refreshed_field]
-    time_series = data.get("Time Series (5min)")
-    
+    time_series = data.get(test_config.TIME_SERIES_KEY.format(test_config.INTERVAL["intraday"]))
+
     # to verify time_series data is not none and default value returns 100 entry
     assert time_series is not None, f"Time Series (5min) should not be None but found response {data}"
     assert len(time_series) ==100, f"Time Series (5min) should contain 100 entry , but got {len(time_series)} "

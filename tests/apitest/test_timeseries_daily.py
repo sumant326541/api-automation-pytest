@@ -47,7 +47,8 @@ def test_verify_daily_time_series_fields(fetch_daily_data,test_config):
     assert meta_data is not None, f"Meta Data should not be None but found response {data}"
     last_refreshed_field: str = test_config.LAST_REFRESHED_KEY
     last_refreshed_value: str = meta_data[last_refreshed_field]
-    time_series = data.get("Time Series (Daily)")
+    time_series = data.get(test_config.TIME_SERIES_KEY.format(test_config.INTERVAL["daily"]))
+    
     # to verify time_series data is not none and default value returns 100 entry
     assert time_series is not None, f"Time Series (Daily) should not be None but found response {data}"
     assert len(time_series) ==100, f"Time Series (Daily) should contain 100 entry , but got {len(time_series)} "
