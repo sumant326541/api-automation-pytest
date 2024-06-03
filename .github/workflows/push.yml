@@ -45,4 +45,8 @@ jobs:
         echo "PYTHONPATH=$PYTHONPATH:$(pwd)/tests" >> $GITHUB_ENV
 
     - name: Run tests
-      run: make test
+      
+      run: |
+        make test
+      env:
+        APIKEY: ${{ secrets.APIKEY }}

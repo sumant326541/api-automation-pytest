@@ -21,7 +21,6 @@ class Config():
     SYMBOL_VALUE: str= "IBM"
     INTERVAL: Mapping[str, str] = field(default_factory=lambda : { "intraday":"5min", "daily":"daily"})
     APIKEY: str = os.getenv("APIKEY", "demo")  # Read from environment, defaulting to "demo" if not found
- 
     META_DATA_KEY: str = "Meta Data"
     LAST_REFRESHED_KEY: str = "3. Last Refreshed"
     LAST_REFRESHED_DAILY_TIME_FORMATE: str = "%Y-%m-%d"
